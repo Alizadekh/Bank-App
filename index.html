@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .income {
+        color: green !important;
+        font-weight: bold;
+      }
+
+      .withdraw {
+        color: red !important;
+        font-weight: bold;
+      }
+
+      .receipt {
+        height: 100vh;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.267);
+        position: fixed;
+        z-index: 999;
+        display: none;
+        backdrop-filter: blur(10px);
+      }
+      .receiptArea {
+        background-color: white;
+        height: 80vh;
+        width: 30%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .receiptArea h1 {
+        color: red;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        right: 30px;
+      }
+      .receiptArea .history {
+        height: 50%;
+        width: 90%;
+        border: 1px solid rgba(0, 0, 0, 0.324);
+
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: auto;
+      }
+      li {
+        margin-bottom: 5px;
+      }
+      .receiptArea figure {
+        position: absolute;
+        bottom: 0;
+        right: 23%;
+      }
+      .receiptArea figure img {
+        width: 100%;
+        height: 100%;
+      }
+      .receiptArea h2 {
+        margin-top: 20px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="receipt">
+      <article class="receiptArea">
+        <h2>Receipt History</h2>
+        <figure style="height: 270px; width: 300px">
+          <img src="./biri.png" alt="qrcode" />
+        </figure>
+        <h1 class="close">X</h1>
+        <div class="history">
+          <!-- <ul class="historyList m-2" style="list-style: none">
+            <li style="list-style: circle">User: Aykhan</li>
+            <li>Amount: +${moneyInput.value}</li>
+            <li>Type: Income</li>
+            <li>Date:${yekunVaxt}</li>
+            <hr />
+          </ul> -->
+        </div>
+      </article>
+    </section>
+
+    <div
+      class="d-flex justify-content-between align-items-center bg-danger p-5">
+      <img src="./Kapital_Bank_logo.svg.png" style="width: 50%" />
+    </div>
+
+    <main class="container p-5">
+      <input
+        id="moneyInput"
+        class="form-control form-control-lg"
+        type="number"
+        placeholder="Your money" />
+      <p
+        class="balanceInfo m-2"
+        ,
+        style="text-align: center; color: red; display: none; font-size: 20px">
+        Balance is not enough, current balance :
+        <span style="font-size: 30px; font-weight: bold">0</span> ₼
+      </p>
+      <div class="mt-5 d-flex justify-content-center">
+        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+          <button
+            type="button"
+            id="incrementBtn"
+            class="btn btn-danger btn-lg me-5">
+            Income
+          </button>
+          <button type="button" id="decrementBtn" class="btn btn-danger btn-lg">
+            Withdraw
+          </button>
+          <button
+            type="button"
+            id="showReceipt"
+            class="btn btn-danger btn-lg ms-5">
+            Show Receipt
+          </button>
+        </div>
+      </div>
+
+      <table class="table table-striped border my-5">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Balance</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody id="list">
+          <!-- <tr>
+            <td scope="col">1</td>
+            <td scope="col">Income</td>
+            <td scope="col"><span>25</span> $</td>
+            <td scope="col"><span>12</span> $</td>
+            <td scope="col">Time</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
